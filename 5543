@@ -1,0 +1,16 @@
+b =[]
+d =[]
+for i in range(3):
+    b.append(int(input()))
+for i in range(2):
+    d.append(int(input()))
+mb= b[0]
+for i in b:
+    if i<mb:
+        mb = i
+md= d[0]
+for i in d:
+    if i<md:
+        md = i
+r = mb + md - 50
+print(r)
