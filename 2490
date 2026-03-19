@@ -1,0 +1,15 @@
+num =[]
+for i in range(0,3,1):
+    num=list(map(int,input().split()))
+    total= sum(num)
+    if total==3:
+        print("A")
+    if total==2:
+        print("B")
+    if total==1:
+        print("C")
+    if total==0:
+        print("D")
+    if total==4:
+        print("E")
+   
