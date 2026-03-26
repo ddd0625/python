@@ -1,0 +1,10 @@
+max=0
+sum=0
+a=0
+b=0
+for i in range(0,4,1):
+    a,b= map(int,input().split())
+    sum = sum+b-a
+    if max<sum:
+        max=sum
+print(max)
