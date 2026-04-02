@@ -1,0 +1,12 @@
+t=int(input())
+for i in range(t):
+    d = list(map(int, input().split()))
+    n = d[0]
+    s = d[1:]
+    avg=sum(s)/n
+    count=0
+    for j in s:
+        if j>avg:
+            count +=1
+    ratio = (count/n)*100
+    print(f"{ratio:.3f}%")
