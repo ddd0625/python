@@ -1,0 +1,36 @@
+import random
+
+N = int(input("N 입력 (2~5): "))
+
+def make_matrix():
+    m = []
+    for i in range(N):
+        row = []
+        for j in range(N):
+            row.append(random.randint(1, N*N*10 - 1))
+        m.append(row)
+    return m
+
+def print_matrix(m):
+    for i in range(N):
+        for j in range(N):
+            print(m[i][j], end="\t")
+        print()
+    print()
+
+def transpose(m):
+    t = []
+    for i in range(N):
+        row = []
+        for j in range(N):
+            row.append(m[j][i])
+        t.append(row)
+    return t
+
+A = make_matrix()
+
+print("원래 행렬")
+print_matrix(A)
+
+print("전치 행렬")
+print_matrix(transpose(A))
