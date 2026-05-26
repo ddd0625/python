@@ -1,0 +1,48 @@
+import os
+import filecmp
+
+def get_files_info(dirname):
+    files = {}
+
+    if not os.path.isdir(dirname):
+        print(f"{dirname}은(는) 디렉토리가 아닙니다.")
+        return None
+
+    for filename in os.listdir(dirname):
+        path = os.path.join(dirname, filename)
+
+        if os.path.isfile(path):
+            files[filename] = os.path.getsize(path)
+
+    return files
+
+
+dir1 = input("첫 번째 디렉토리 이름 입력: ")
+dir2 = input("두 번째 디렉토리 이름 입력: ")
+
+files1 = get_files_info(dir1)
+files2 = get_files_info(dir2)
+
+if files1 is None or files2 is None:
+    exit()
+if len(files1) != len(files2):
+    print("두 디렉토리의 파일 개수가 다릅니다.")
+    exit()
+
+if set(files1.keys()) != set(files2.keys()):
+    print("두 디렉토리의 파일 이름이 다릅니다.")
+    exit()
+
+for filename in files1:
+    path1 = os.path.join(dir1, filename)
+    path2 = os.path.join(dir2, filename)
+
+    if files1[filename] != files2[filename]:
+        print(f"{filename} 파일의 크기가 다릅니다.")
+        exit()
+
+    if not filecmp.cmp(path1, path2, shallow=False):
+        print(f"{filename} 파일의 내용이 다릅니다.")
+        exit()
+
+print("두 디렉토리의 파일 개수, 이름, 크기, 내용이 모두 같습니다.")
